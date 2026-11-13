@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Exhale Studios</title>
+<meta name="description" content="Exhale Studios is an independent game studio. Alembic is out now on Steam. Library at the End of the Universe, Sonar Lock and Disparate Destiny are on the way.">
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="Exhale Studios">
+<meta property="og:description" content="Independent games worth getting lost in.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/brand/og.jpg">
+<link rel="icon" type="image/png" href="assets/brand/favicon.png">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/eb-garamond.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script>
+// With scripts on, one place is shown at a time: the front hall or a game.
+// Without them, every place sits on one long page and the links still work.
+(function () {
+  var de = document.documentElement;
+  var games = ['alembic', 'library', 'sonar-lock', 'disparate-destiny', 'studio'];
+  var at = location.hash.slice(1);
+  de.setAttribute('data-view', games.indexOf(at) >= 0 ? at : 'top');
+  de.classList.add('js');
+  try {
+    // First visit of a session: start with the name hidden so the opening breath can reveal it.
+    if (!location.hash && !sessionStorage.getItem('exhale-arrived') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      de.classList.add('arriving');
+      // If the rest of the script never arrives, show the page anyway.
+      setTimeout(function () {
+        if (!de.classList.contains('arrived')) de.classList.remove('arriving');
+      }, 6000);
+    }
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#games">Skip to the games</a>
+
+<header class="bar">
+  <a class="bar-mark" href="#top" aria-label="Exhale Studios, back to all games">
+    <img src="assets/brand/wordmark-short.svg" alt="" width="3144" height="430">
+  </a>
+  <nav class="bar-nav" aria-label="Games and studio">
+    <ul>
+      <li><a href="#alembic">Alembic</a></li>
+      <li><a href="#library">Library</a></li>
+      <li><a href="#sonar-lock">Sonar Lock</a></li>
+      <li><a href="#disparate-destiny">Destiny</a></li>
+      <li><a href="#studio">Studio</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!--
+  Each .view is a place: the front hall (#top) or one game. data-tint is the
+  colour of its smoke and data-gate the name that hangs in the smoke on the way
+  in. Inside a view, each .room is one stretch of the page; smoke gathers in
+  the gaps between rooms.
+-->
+<main id="stage">
+
+  <!-- ================= The front hall ================= -->
+
+  <section class="view view-home" id="top" data-tint="0.86,0.86,0.84" data-tint-amt="0">
+    <div class="room lobby">
+      <div class="lobby-head">
+        <h1 class="home-mark">
+          <img src="assets/brand/wordmark.svg" alt="Exhale Studios" width="3144" height="916">
+        </h1>
+        <p class="home-line">Independent games worth getting lost in.</p>
+      </div>
+
+      <h2 class="visually-hidden">Our games</h2>
+      <!-- A door per game. To add one: copy an <li>, give its view a data-tint,
+           and raise --doors by one. -->
+      <ul class="doors" id="games" style="--doors: 4">
+        <li>
+          <a class="door" href="#alembic" style="--glow: 255, 173, 96">
+            <span class="door-arch">
+              <video muted loop playsinline preload="metadata" poster="assets/alembic/door.webp" src="assets/alembic/door.mp4" aria-hidden="true"></video>
+            </span>
+            <span class="door-name">Alembic</span>
+            <span class="door-state">Out now on Steam</span>
+          </a>
+        </li>
+        <li>
+          <a class="door" href="#library" style="--glow: 176, 148, 255">
+            <span class="door-arch">
+              <video muted loop playsinline preload="metadata" poster="assets/library/door.webp" src="assets/library/door.mp4" aria-hidden="true"></video>
+            </span>
+            <span class="door-name">Library at the End of the Universe</span>
+            <span class="door-state">Coming soon to Steam</span>
+          </a>
+        </li>
+        <li>
+          <a class="door" href="#sonar-lock" style="--glow: 110, 190, 255">
+            <span class="door-arch">
+              <video muted loop playsinline preload="metadata" poster="assets/sonar-lock/door.webp" src="assets/sonar-lock/door.mp4" aria-hidden="true" style="object-position: 50% 0%"></video>
+            </span>
+            <span class="door-name">Sonar Lock</span>
+            <span class="door-state">Coming to Google Play</span>
+          </a>
+        </li>
+        <li>
+          <a class="door" href="#disparate-destiny" style="--glow: 255, 104, 84">
+            <span class="door-arch">
+              <video muted loop playsinline preload="metadata" poster="assets/disparate-destiny/necromancer.webp" src="assets/disparate-destiny/necromancer.mp4" aria-hidden="true"></video>
+            </span>
+            <span class="door-name">Disparate Destiny</span>
+            <span class="door-state">In development</span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="lobby-foot">
+        <span>Four so far, and more taking shape.</span>
+        <a href="#studio">What we are building, and why</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= Alembic ================= -->
+
+  <article class="view scene-alembic" id="alembic" data-gate="Alembic" data-tint="1.0,0.58,0.24" data-tint-amt="0.78" tabindex="-1">
+    <section class="room room-hero">
+      <div class="room-grid">
+        <div class="media">
+          <div class="gallery" data-gallery>
+            <div class="frame">
+              <video class="frame-media" muted loop playsinline preload="none" poster="assets/alembic/clip3.webp" src="assets/alembic/clip3.mp4" aria-label="Alembic gameplay: rising water trapping gas under a diving bell"></video>
+            </div>
+            <div class="thumbs" role="group" aria-label="Alembic clips and screenshots">
+              <button type="button" class="thumb" aria-pressed="true" data-kind="video" data-src="assets/alembic/clip3.mp4" data-poster="assets/alembic/clip3.webp" data-label="Alembic gameplay: rising water trapping gas under a diving bell"><img src="assets/alembic/clip3.webp" alt="Clip: gas trapped under a diving bell" loading="lazy" width="420" height="292"></button>
+              <button type="button" class="thumb" aria-pressed="false" data-kind="video" data-src="assets/alembic/clip5.mp4" data-poster="assets/alembic/clip5.webp" data-label="Alembic gameplay: plumbing and a lit bulb built inside a pixel-art portrait"><img src="assets/alembic/clip5.webp" alt="Clip: a machine built inside a portrait" loading="lazy" width="720" height="500"></button>
+              <button type="button" class="thumb" aria-pressed="false" data-kind="image" data-src="assets/alembic/shot1.webp" data-label="Alembic screenshot: a workbench of experiments going up in flames"><img src="assets/alembic/shot1.webp" alt="Screenshot: everything on fire" loading="lazy" width="1440" height="810"></button>
+              <button type="button" class="thumb" aria-pressed="false" data-kind="image" data-src="assets/alembic/shot2.webp" data-label="Alembic screenshot: thermite burning on a workbench"><img src="assets/alembic/shot2.webp" alt="Screenshot: thermite" loading="lazy" width="1440" height="810"></button>
+              <button type="button" class="thumb" aria-pressed="false" data-kind="image" data-src="assets/alembic/shot5.webp" data-label="Alembic screenshot: the word Alembic spelled in glowing gas tubes wired to a battery"><img src="assets/alembic/shot5.webp" alt="Screenshot: the name in neon" loading="lazy" width="1440" height="810"></button>
+            </div>
+          </div>
+        </div>
+        <div class="copy">
+          <h2 class="sign">
+            <span class="visually-hidden">Alembic</span>
+            <video muted loop playsinline preload="none" poster="assets/alembic/sign.webp" src="assets/alembic/sign.mp4" aria-hidden="true" width="1054" height="286"></video>
+          </h2>
+          <p class="status">Out now on Steam for Windows, with a free demo.</p>
+          <p>A falling-sand laboratory built on the real periodic table. Every element carries its real properties, and reactions come from chemistry rather than a recipe book.</p>
+          <p>Pour elements together. Heat them, cool them, dissolve them, electrify them, compress them, irradiate them, and see what happens.</p>
+          <p class="actions">
+            <a class="button button-solid" href="https://store.steampowered.com/app/4933990/Alembic/">Get Alembic on Steam</a>
+            <a class="button" href="https://discord.gg/wYmCBByAc4">Join the Discord</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="room" aria-label="What you can do in Alembic">
+      <div class="room-grid">
+        <div class="room-head">
+          <h3>There is no recipe book.</h3>
+          <p>The simulation asks what the materials are, what state they are in, and what you have done to them. What happens next is up to the chemistry.</p>
+        </div>
+        <ul class="features">
+          <li class="feature">
+            <video muted loop playsinline preload="none" poster="assets/alembic/clip4.webp" src="assets/alembic/clip4.mp4" aria-label="Alembic gameplay: powders poured into a beaker"></video>
+            <h4>Chemistry you can play with</h4>
+            <p>Drop sodium into water. Grind aluminium over iron oxide and light the thermite. Plate metals, grow rust, melt sand into glass.</p>
+          </li>
+          <li class="feature">
+            <video muted loop playsinline preload="none" poster="assets/alembic/clip1.webp" src="assets/alembic/clip1.mp4" aria-label="Alembic gameplay: water boiling in a flask and condensing into a tank"></video>
+            <h4>Systems built around it</h4>
+            <p>Pipes, fans, filters and generators work on the same particles, heat and pressure as everything else. Build a steam cycle and turn heat into power.</p>
+          </li>
+          <li class="feature">
+            <video muted loop playsinline preload="none" poster="assets/alembic/clip2.webp" src="assets/alembic/clip2.mp4" aria-label="Alembic gameplay: a uranium pile running away and exploding"></video>
+            <h4>A reactor, or a bomb</h4>
+            <p>Neutrons scatter, slow and multiply. Keep the chain under control and it boils your coolant. Let it run away and you get something much less microscopic.</p>
+          </li>
+          <li class="feature">
+            <video muted loop playsinline preload="none" poster="assets/alembic/clip6.webp" src="assets/alembic/clip6.mp4" aria-label="Alembic gameplay: the game window being shaken to mix its contents"></video>
+            <h4>Your window is a lab flask</h4>
+            <p>Hold Shift and shake the game window. Powders slam into the walls and liquids slosh. It is not a mini-game. It is the mixing tool.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="room" aria-label="The Codex">
+      <div class="room-grid">
+        <button type="button" class="plate" data-zoom="assets/alembic/shot3.webp" data-label="Alembic screenshot: the Codex, a periodic table that fills in as you play">
+          <img src="assets/alembic/shot3.webp" alt="Screenshot: the Codex, a periodic table with some elements filled in" loading="lazy" width="1440" height="810">
+        </button>
+        <div class="copy">
+          <h3>You fill in the periodic table yourself.</h3>
+          <p>You don't begin with a finished encyclopedia. Experiments fill the Codex as you play, and much of the table opens through discoveries of your own.</p>
+          <p>Challenges give you something to aim at, from distillation to nuclear destruction. Sandbox mode hands you the whole laboratory at once.</p>
+          <p class="actions">
+            <a class="button button-solid" href="https://store.steampowered.com/app/4933990/Alembic/">Get Alembic on Steam</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <nav class="room onward" aria-label="Keep walking">
+      <div class="room-grid">
+        <a class="next" href="#library" style="--glow: 176, 148, 255">
+          <span class="next-label">Next door</span>
+          <span class="next-name">Library at the End of the Universe</span>
+          <span class="next-state">Coming soon to Steam</span>
+        </a>
+        <a class="back" href="#top">All games</a>
+      </div>
+    </nav>
+  </article>
+
+  <!-- ================= Library at the End of the Universe ================= -->
+
+  <article class="view scene-library" id="library" data-gate="Library|at the End of|the Universe" data-tint="0.62,0.47,1.0" data-tint-amt="0.82" tabindex="-1">
+    <section class="room room-hero">
+      <div class="room-grid">
+        <div class="copy">
+          <h2>Library at the End of the Universe</h2>
+          <p class="status">Coming soon to Steam for Windows.</p>
+          <p>You are the curator of the universe's last library, cataloguing history at the end of time. Inscribe runes by hand, bind them into words that bend the rules, and let the library keep writing while you are away.</p>
+          <p class="actions">
+            <a class="button button-solid" href="https://store.steampowered.com/app/5214920/Library_at_the_End_of_the_Universe/">Wishlist on Steam</a>
+          </p>
+        </div>
+        <div class="media">
+          <div class="gallery" data-gallery>
+            <div class="frame">
+              <img class="frame-media" src="assets/library/shot2.webp" alt="Library at the End of the Universe screenshot: a black hole pulling in a disc of glowing tomes, with the library's upgrades listed alongside" loading="lazy" width="1440" height="810">
+            </div>
+            <div class="thumbs" role="group" aria-label="Library at the End of the Universe screenshots">
+              <button type="button" class="thumb" aria-pressed="true" data-kind="image" data-src="assets/library/shot2.webp" data-label="Library at the End of the Universe screenshot: a black hole pulling in a disc of glowing tomes, with the library's upgrades listed alongside"><img src="assets/library/shot2.webp" alt="Screenshot: the library at work" loading="lazy" width="1440" height="810"></button>
+              <button type="button" class="thumb" aria-pressed="false" data-kind="image" data-src="assets/library/shot3.webp" data-label="Library at the End of the Universe screenshot: the Constellation, a ring of upgrades around the black hole"><img src="assets/library/shot3.webp" alt="Screenshot: the Constellation" loading="lazy" width="1440" height="810"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="room" aria-label="How an Epoch goes">
+      <div class="room-grid">
+        <div class="room-head">
+          <h3>Nine Epochs, each ending in a collapse.</h3>
+          <p>An idle incremental about cataloguing a universe as it ends. Play it actively, leave it running, or some of each. Every way of playing reaches the last page.</p>
+        </div>
+        <ol class="epochs">
+          <li class="epoch">
+            <button type="button" data-zoom="assets/library/shot1.webp" data-label="Library at the End of the Universe screenshot: the first Epoch, an empty library and a quiet black hole">
+              <img src="assets/library/shot1.webp" alt="Screenshot: the first Epoch, a black hole and almost nothing else" loading="lazy" width="1440" height="810">
+            </button>
+            <h4>It starts quiet.</h4>
+            <p>An empty library, a black hole, and the first rune drawn by hand.</p>
+          </li>
+          <li class="epoch">
+            <button type="button" data-zoom="assets/library/shot4.webp" data-label="Library at the End of the Universe screenshot: a late Epoch, the disc grown bright and crowded">
+              <img src="assets/library/shot4.webp" alt="Screenshot: a late Epoch, the disc around the black hole bright and crowded" loading="lazy" width="1440" height="810">
+            </button>
+            <h4>It fills.</h4>
+            <p>Words bend the rules, and the library keeps writing while you are away.</p>
+          </li>
+          <li class="epoch">
+            <button type="button" data-zoom="assets/library/shot5.webp" data-label="Library at the End of the Universe screenshot: a ring of light closing around the black hole">
+              <img src="assets/library/shot5.webp" alt="Screenshot: a ring of light closing around the black hole" loading="lazy" width="1440" height="810">
+            </button>
+            <h4>It collapses.</h4>
+            <p>And leaves you stronger for the next one.</p>
+          </li>
+        </ol>
+        <div class="room-foot">
+          <p class="facts">No micro-transactions. Progress while you are away. A lifetime leaderboard, sealed when you write the last page.</p>
+          <p class="actions">
+            <a class="button button-solid" href="https://store.steampowered.com/app/5214920/Library_at_the_End_of_the_Universe/">Wishlist on Steam</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <nav class="room onward" aria-label="Keep walking">
+      <div class="room-grid">
+        <a class="next" href="#sonar-lock" style="--glow: 110, 190, 255">
+          <span class="next-label">Next door</span>
+          <span class="next-name">Sonar Lock</span>
+          <span class="next-state">Coming to Google Play</span>
+        </a>
+        <a class="back" href="#top">All games</a>
+      </div>
+    </nav>
+  </article>
+
+  <!-- ================= Sonar Lock ================= -->
+
+  <article class="view scene-sonar" id="sonar-lock" data-gate="Sonar Lock" data-tint="0.32,0.70,1.0" data-tint-amt="0.85" data-ping tabindex="-1">
+    <section class="room room-hero">
+      <div class="room-grid">
+        <div class="copy">
+          <h2>
+            <img src="assets/sonar-lock/logo.webp" alt="Sonar Lock" loading="lazy" width="900" height="418">
+          </h2>
+          <p class="status">Coming to Google Play.</p>
+          <p>A Cold War submarine auto-battler. Pack a hull with torpedoes, sonar and armour from bow to stern, pick a captain, and engage.</p>
+          <p>The boats fight it out on their own, yours against another captain's.</p>
+        </div>
+        <div class="phones">
+          <button type="button" class="phone" data-zoom="assets/sonar-lock/shot1.webp" data-label="Sonar Lock screenshot: two submarines side by side in battle">
+            <img src="assets/sonar-lock/shot1.webp" alt="Screenshot: two submarines side by side in battle" loading="lazy" width="640" height="1279">
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="room" aria-label="Building the boat">
+      <div class="room-grid">
+        <div class="room-head">
+          <h3>The build is the battle.</h3>
+          <p>Between fights you are in the shop, fitting out the boat. Once you engage, it is out of your hands.</p>
+        </div>
+        <ul class="features features-3 features-phones">
+          <li class="feature">
+            <button type="button" class="phone" data-zoom="assets/sonar-lock/shot2.webp" data-label="Sonar Lock screenshot: the shop, with a hull grid half filled and parts on offer"><img src="assets/sonar-lock/shot2.webp" alt="Screenshot: the shop, with a hull grid half filled and parts on offer" loading="lazy" width="640" height="1279"></button>
+            <h4>Bow to stern</h4>
+            <p>Every part has a shape and has to fit the hull. Where it sits matters: some weapons hit harder from the bow.</p>
+          </li>
+          <li class="feature">
+            <button type="button" class="phone" data-zoom="assets/sonar-lock/shot4.webp" data-label="Sonar Lock screenshot: the Phosphor Charge, a rare weapon, with its damage, power cost and hit chance"><img src="assets/sonar-lock/shot4.webp" alt="Screenshot: the card for a rare weapon, the Phosphor Charge" loading="lazy" width="640" height="1279"></button>
+            <h4>Find them first</h4>
+            <p>Weapons mostly miss until your sonar has a lock. Build to get the lock sooner, or to be harder to find.</p>
+          </li>
+          <li class="feature">
+            <button type="button" class="phone" data-zoom="assets/sonar-lock/shot3.webp" data-label="Sonar Lock screenshot: choosing a captain"><img src="assets/sonar-lock/shot3.webp" alt="Screenshot: choosing a captain, with Commander Brooke selected" loading="lazy" width="640" height="1279"></button>
+            <h4>A captain for the build</h4>
+            <p>Each captain brings a rule of their own. Brooke's weapons fire extra shots while the enemy is burning.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="room onward" aria-label="Keep walking">
+      <div class="room-grid">
+        <a class="next" href="#disparate-destiny" style="--glow: 255, 104, 84">
+          <span class="next-label">Next door</span>
+          <span class="next-name">Disparate Destiny</span>
+          <span class="next-state">In development</span>
+        </a>
+        <a class="back" href="#top">All games</a>
+      </div>
+    </nav>
+  </article>
+
+  <!-- ================= Disparate Destiny ================= -->
+
+  <article class="view scene-destiny" id="disparate-destiny" data-gate="Disparate|Destiny" data-tint="0.86,0.22,0.17" data-tint-amt="0.8" tabindex="-1">
+    <section class="room room-hero">
+      <div class="room-grid">
+        <div class="copy">
+          <h2>
+            <img src="assets/disparate-destiny/logo.webp" alt="Disparate Destiny" loading="lazy" width="849" height="354">
+          </h2>
+          <p class="status">In development. Not listed anywhere yet.</p>
+          <blockquote class="narration">
+            <p>Without warning, on an average day, you find yourself ripped from your world and thrown into the unknown. A stranger, in a rare display of compassion, drags you from the sea and shelters you to shore.</p>
+          </blockquote>
+          <p>A first-person dungeon crawler with turn-based fights. Under the church at Gatherings Watch the cellar has floors without end, and one character goes a very long way down.</p>
+        </div>
+        <div class="media">
+          <div class="gallery" data-gallery>
+            <div class="frame frame-wide">
+              <video class="frame-media" muted loop playsinline preload="none" poster="assets/disparate-destiny/knight.webp" src="assets/disparate-destiny/knight.mp4" aria-label="Disparate Destiny gameplay: a Knight changing stance in a fight against three bandits"></video>
+            </div>
+            <div class="thumbs" role="group" aria-label="Disparate Destiny clips">
+              <button type="button" class="thumb" aria-pressed="true" data-kind="video" data-src="assets/disparate-destiny/knight.mp4" data-poster="assets/disparate-destiny/knight.webp" data-label="Disparate Destiny gameplay: a Knight changing stance in a fight against three bandits"><img src="assets/disparate-destiny/knight.webp" alt="Clip: the Knight" loading="lazy" width="700" height="400"></button>
+              <button type="button" class="thumb" aria-pressed="false" data-kind="video" data-src="assets/disparate-destiny/pyromancer.mp4" data-poster="assets/disparate-destiny/pyromancer.webp" data-label="Disparate Destiny gameplay: a Pyromancer kindling a fire under a group of creatures, then setting it off"><img src="assets/disparate-destiny/pyromancer.webp" alt="Clip: the Pyromancer" loading="lazy" width="492" height="400"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="room" aria-label="Callings">
+      <div class="room-grid">
+        <div class="room-head">
+          <h3>Fifty callings, and no two fight alike.</h3>
+          <p>A calling is who you are down there. Here are six of them.</p>
+        </div>
+        <ul class="callings">
+          <li class="calling">
+            <video muted loop playsinline preload="none" poster="assets/disparate-destiny/necromancer.webp" src="assets/disparate-destiny/necromancer.mp4" aria-label="Disparate Destiny gameplay: the Necromancer"></video>
+            <h4>Necromancer</h4>
+            <p>Raise skeletons. Blow them up.</p>
+          </li>
+          <li class="calling">
+            <video muted loop playsinline preload="none" poster="assets/disparate-destiny/chronomancer.webp" src="assets/disparate-destiny/chronomancer.mp4" aria-label="Disparate Destiny gameplay: the Chronomancer"></video>
+            <h4>Chronomancer</h4>
+            <p>Slow time. Then rewind it.</p>
+          </li>
+          <li class="calling">
+            <video muted loop playsinline preload="none" poster="assets/disparate-destiny/bureaucrat.webp" src="assets/disparate-destiny/bureaucrat.mp4" aria-label="Disparate Destiny gameplay: the Bureaucrat"></video>
+            <h4>Bureaucrat</h4>
+            <p>Red Tape. Red Tape for everyone.</p>
+          </li>
+          <li class="calling">
+            <video muted loop playsinline preload="none" poster="assets/disparate-destiny/midlife-crisis.webp" src="assets/disparate-destiny/midlife-crisis.mp4" aria-label="Disparate Destiny gameplay: the Midlife Crisis"></video>
+            <h4>Midlife Crisis</h4>
+            <p>Relive the glory days. Oh no, my back.</p>
+          </li>
+          <li class="calling">
+            <video muted loop playsinline preload="none" poster="assets/disparate-destiny/raver.webp" src="assets/disparate-destiny/raver.mp4" aria-label="Disparate Destiny gameplay: the Raver"></video>
+            <h4>Raver</h4>
+            <p>Get them dancing. Wait for the drop.</p>
+          </li>
+          <li class="calling">
+            <video muted loop playsinline preload="none" poster="assets/disparate-destiny/celebrity-chef.webp" src="assets/disparate-destiny/celebrity-chef.mp4" aria-label="Disparate Destiny gameplay: the Celebrity Chef"></video>
+            <h4>Celebrity Chef</h4>
+            <p>Take the order. Season. Chop. Order up.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="room onward" aria-label="Keep walking">
+      <div class="room-grid">
+        <a class="next" href="#top">
+          <span class="next-label">That is everything so far</span>
+          <span class="next-name">Back to all games</span>
+        </a>
+      </div>
+    </nav>
+  </article>
+
+  <!-- ================= The studio ================= -->
+  <!-- Draft copy throughout this view: written to be replaced. -->
+
+  <article class="view scene-studio" id="studio" data-gate="The|Studio" data-tint="0.86,0.86,0.84" data-tint-amt="0" tabindex="-1">
+    <section class="room room-hero">
+      <div class="room-grid">
+        <div class="copy">
+          <h2>The studio</h2>
+          <p class="lede">Exhale Studios is an independent game studio. We build games around systems deep enough to disappear into: a chemistry set that obeys the periodic table, a library at the end of time, a submarine you pack like a suitcase, a dungeon with no bottom floor.</p>
+          <p>They don't look alike. What they share is how we go about making them.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="room" aria-label="How we make games">
+      <div class="room-grid">
+        <ul class="tenets">
+          <li class="tenet" style="--glow: 255, 183, 101">
+            <div class="tenet-copy">
+              <h3>Build the rules, not the moments.</h3>
+              <p>We would rather make a system that behaves than script a scene that plays once. Alembic has no recipe book. Every reaction comes from what the materials are and what you did to them, so some of what happens surprises us too.</p>
+              <a class="tenet-link" href="#alembic">See it in Alembic</a>
+            </div>
+            <div class="tenet-media">
+              <video muted loop playsinline preload="none" poster="assets/alembic/clip4.webp" src="assets/alembic/clip4.mp4" aria-label="Alembic gameplay: powders poured into a beaker"></video>
+            </div>
+          </li>
+          <li class="tenet" style="--glow: 176, 148, 255">
+            <div class="tenet-copy">
+              <h3>Leave things to find.</h3>
+              <p>We don't hand over a finished encyclopedia on the first screen. What a game holds should open up because you went looking, and the Library keeps its last page for whoever gets there.</p>
+              <a class="tenet-link" href="#library">See it in Library at the End of the Universe</a>
+            </div>
+            <div class="tenet-media">
+              <img src="assets/library/shot3.webp" alt="Library at the End of the Universe screenshot: the Constellation, a ring of upgrades around the black hole" loading="lazy" width="1440" height="810">
+            </div>
+          </li>
+          <li class="tenet" style="--glow: 110, 190, 255">
+            <div class="tenet-copy">
+              <h3>The thinking is the game.</h3>
+              <p>Most of what we make is decided before anything moves: the boat you packed, the words you bound, the stance you took going into the fight. We like games that reward a plan more than a reflex.</p>
+              <a class="tenet-link" href="#sonar-lock">See it in Sonar Lock</a>
+            </div>
+            <div class="tenet-media">
+              <img src="assets/sonar-lock/shot2.webp" alt="Sonar Lock screenshot: the shop, with a hull grid half filled and parts on offer" loading="lazy" width="640" height="1279" style="object-position: 50% 12%">
+            </div>
+          </li>
+          <li class="tenet" style="--glow: 255, 104, 84">
+            <div class="tenet-copy">
+              <h3>Take the systems seriously, and nothing else.</h3>
+              <p>A dungeon crawler can have a Bureaucrat who fights with red tape and a Midlife Crisis who throws their back out. The rules underneath still have to hold.</p>
+              <a class="tenet-link" href="#disparate-destiny">See it in Disparate Destiny</a>
+            </div>
+            <div class="tenet-media">
+              <video muted loop playsinline preload="none" poster="assets/disparate-destiny/bureaucrat.webp" src="assets/disparate-destiny/bureaucrat.mp4" aria-label="Disparate Destiny gameplay: the Bureaucrat"></video>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="room" aria-label="What comes next">
+      <div class="room-grid">
+        <div class="copy">
+          <h3>What comes next</h3>
+          <p class="lede">The four games on the front page are where we have started, not the whole list. Some of what we are working on is too early to show. When it is ready, it gets a door.</p>
+        </div>
+        <div class="studio-side">
+          <ul class="links">
+            <li><a href="https://store.steampowered.com/app/4933990/Alembic/">Alembic on Steam</a></li>
+            <li><a href="https://store.steampowered.com/app/5214920/Library_at_the_End_of_the_Universe/">Library at the End of the Universe on Steam</a></li>
+            <li><a href="https://discord.gg/wYmCBByAc4">Discord</a></li>
+          </ul>
+          <p class="publisher">
+            <span>Published on Steam by</span>
+            <img src="assets/brand/the-bueno-interactive.png" alt="The Bueno Interactive" loading="lazy" width="360" height="142">
+          </p>
+          <p class="fine">© 2026 Exhale Studios</p>
+        </div>
+      </div>
+    </section>
+
+    <nav class="room onward" aria-label="Keep walking">
+      <div class="room-grid">
+        <a class="next" href="#top">
+          <span class="next-label">The games</span>
+          <span class="next-name">Back to all games</span>
+        </a>
+      </div>
+    </nav>
+  </article>
+
+</main>
+
+<canvas id="smoke" aria-hidden="true"></canvas>
+<div id="gates" aria-hidden="true"><div class="gate-text"></div></div>
+
+<dialog class="lightbox" aria-label="Screenshot">
+  <img alt="">
+  <form method="dialog"><button class="button">Close</button></form>
+</dialog>
+
+<script src="js/smoke.js" defer></script>
+<script src="js/site.js" defer></script>
+</body>
+</html>
